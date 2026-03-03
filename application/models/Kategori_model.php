@@ -9,4 +9,8 @@ class Kategori_model extends CI_MOdel{
     {
         return $this->db->get($this->table)->result();
     }
+    public function insert($data)
+    {
+        return $this->db->insert($this->table, $data);
+    }
 }
