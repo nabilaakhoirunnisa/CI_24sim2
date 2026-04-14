@@ -24,6 +24,15 @@
     </a>
 </li>
 
+<hr class="sidebar-divider my-0">
+
+<li class="nav-item">
+    <a class="nav-link" href="<?= site_url('anggota'); ?>">
+        <i class="fas fa-fw fa-users"></i>
+        <span>Anggota</span>
+    </a>
+</li>
+
 <hr class="sidebar-divider d-none d-md-block">
 
 </ul>

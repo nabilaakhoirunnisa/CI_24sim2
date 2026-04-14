@@ -1,7 +1,7 @@
 <?php
-defined('BASEPATH')OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-class kategori extends CI_Controller{
+class Kategori extends CI_Controller {
 
     public function __construct()
     {
@@ -16,6 +16,7 @@ class kategori extends CI_Controller{
         $this->load->view('templates/topbar');
         $this->load->view('kategori/index', $data);
         $this->load->view('templates/footer');
+
     }
     public function tambah()
     {
@@ -27,8 +28,8 @@ class kategori extends CI_Controller{
     }
     public function simpan()
     {
-        $data= [
-            'nama_kategori'=> $this->input->post('nama_kategori')
+        $data = [
+            'nama_kategori' => $this->input->post('nama_kategori')
         ];
 
         $this->Kategori_model->insert($data);
@@ -37,11 +38,35 @@ class kategori extends CI_Controller{
     public function hapus($id)
     {
         // if($this->Kategori_model->is_used($id)){
-        //     $this->session->set_flashdata('error', 'Kategori tidak bisa dihapus karena masih digunakan');
+        //    $this->session->aset_flashdata('error', 'Kategori tidak bisa dihapus karena masih digunakan');
         // } else {
             $this->Kategori_model->delete($id);
-            $this->session->set_flashdata('success', 'Data Berhasil dihapus');
+            $this->session->set_flashdata('succes', 'Data berhasil dihapus');
         // }
         redirect('kategori');
+    }
+    public function edit($id)
+    {
+        $data['kategori']= $this->Kategori_model->get_by_id($id);
+        $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
+        $this->load->view('kategori/edit', $data);
+        $this->load->view('templates/footer');
+    }
+    public function update($id)
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('nama_kategori', 'Nama Katgeori', 'required');
+        if($this->form_validation->run()==FALSE){
+
+        }else{
+            $data=[
+                'nama_kategori'=>$this->input->post('nama_kategori')
+            ];
+            $this->Kategori_model->update($id, $data);
+            $this->session->set_flashdata('succes', 'Data berhasil di update');
+            redirect('kategori');
+        }
     }
 }
