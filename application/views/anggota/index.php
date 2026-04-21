@@ -8,9 +8,9 @@
         </div>
         <div class="card-body">
 
-            <?php if ($this->session->flashdata('succes')): ?>
+            <?php if ($this->session->flashdata('success')): ?>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <?= $this->session->flashdata('succes') ?>
+                    <?= $this->session->flashdata('success') ?>
                     <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
                 </div>
             <?php endif; ?>
