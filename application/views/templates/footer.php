@@ -33,7 +33,7 @@
             datasets:[{
             label:'Jumlah Data',
             data:[
-                <?= $total_kategori; ?>
+                <?= $total_kategori; ?>,
                 <?= $total_anggota; ?>
             ],
             backgroundColor:[
@@ -47,7 +47,7 @@
         scales:{
             yAxes:[{
                 ticks:{
-                    beginAtzero: true
+                    beginAtZero: true
                 }
             }]
         }
