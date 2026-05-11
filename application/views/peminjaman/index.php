@@ -1,5 +1,5 @@
 <div class="container-fluid">
-<h2 class=h3 mb-4 text-gray-800>Data Peminjaman</h2>
+<h2 class="h3 mb-4 text-gray-800">Data Peminjaman</h2>
 
 <a href="<?= site_url('peminjaman/tambah'); ?>" class="btn btn-primary mb-3">
     <i class="fas fa-plus"></i>Tambah</a>
@@ -11,7 +11,7 @@
 <thead class="thead-dark">
     <tr>
         <th>No</th>
-        <th>Kode</th>
+        <th>Kode peminjaman</th>
         <th>Nama</th>
         <th>Tanggal</th>
         <th>Status</th>
@@ -28,11 +28,11 @@
         <td><?= $d->status; ?></td>
         <td>
             <?php if($d->status =='dipinjam'): ?>
-                <a href="<?= site_url('peminjaman/kembali/'. $d->id); ?>"
-                class="btn btn-success btn-sm">
-                kembalikan </a>
-                <?php endif; ?>
+                <a href="<?= site_url('peminjaman/kembali/'). $d->id; ?>" class="btn btn-success btn-sm">
+                    kembalikan
+                </a>
         </td>
+        <?php endif; ?>
     </tr>
 <?php endforeach; ?>
 </tbody>

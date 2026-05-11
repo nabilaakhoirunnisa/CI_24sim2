@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit ('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class auth extends CI_Controller{
+
     public function __construct()
     {
         parent::__construct();
@@ -25,7 +26,7 @@ class auth extends CI_Controller{
                 'id_user'=> $user->id,
                 'username'=> $user->username,
                 'role'=> $user->role,
-                'login'= TRUE
+                'login'=> TRUE
             ];
 
             $this->session->set_userdata($data);
@@ -33,13 +34,13 @@ class auth extends CI_Controller{
             $this->auth_model->update_last_login($user->id);
             redirect('dashboard');
         }else{
-            $this->session->set_flashdata('eror', 'Username dan password salah');
+            $this->session->set_flashdata('error', 'Username dan password salah');
             redirect('login');
         }
     }
     public function logout()
     {
-        $this->session->sessdestroy();
-        redirect ('login');
+        $this->session->sess_destroy();
+        redirect('login');
     }
 }

@@ -44,11 +44,11 @@
                                     <?php if ($this->session->flashdata('error')): ?>
                                         <div class="alert alert-danger">
                                             <?= $this->session->flashdata('error'); ?>
-                                    </div>
-                                    <?php endif; ?>
+                                        </div>
+                                        <?php endif; ?>
                                     <form class="user" method="post" action="<?= site_url('login/proses');?>">
                                         <div class="form-group">
-                                            <input type="text" name="username" class="form-control form-control-user"
+                                            <input type="textl" name="username" class=" form-control form-user"
                                                 placeholder="Username" required>
                                         </div>
 
@@ -64,8 +64,8 @@
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                    </button>
+                                        Login
+                                        </button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
@@ -91,10 +91,10 @@
     <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="<?= base_url('assets/vendor/jquery-easing/jquery.easing.min.js');?>"></script>
+    <script src="<?= base_url('assets/vendor/jquey-easing/jquery.easing.min.js');?>"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="<?= base_url('assets/js/sb-admin-2.min.js');?>"></script>
+    <script src="js/sb-admin-2.min.js"></script>
 
 </body>
 
