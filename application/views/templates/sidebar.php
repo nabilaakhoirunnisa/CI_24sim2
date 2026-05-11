@@ -9,7 +9,7 @@
 <hr class="sidebar-divider my-0">
 
 <li class="nav-item active">
-    <a class="nav-link" href="<?= site_url('dashboard'); ?>">">
+    <a class="nav-link" href="<?= site_url('dashboard') ?>">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span>
     </a>
@@ -17,39 +17,37 @@
 
 <hr class="sidebar-divider my-0">
 
-<li class="nav-item">
-    <a class="nav-link" href="<?= site_url('kategori'); ?>">
-        <i class="fas fa-fw fa-folder"></i>
-        <span>Kategori</span>
-    </a>
-</li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= site_url('kategori'); ?>">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Kategori</span>
+        </a>
+    </li>
 
 <hr class="sidebar-divider my-0">
 
 <li class="nav-item">
     <a class="nav-link" href="<?= site_url('anggota'); ?>">
         <i class="fas fa-fw fa-users"></i>
-        <span>Anggota</span>
+        <span>anggota</span>
     </a>
 </li>
 
-<hr class="sidebar-divider my-0">
-
 <li class="nav-item">
     <a class="nav-link" href="<?= site_url('buku'); ?>">
+        <i class="fas fa-fw fa-book"></i>
+        <span>buku</span>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" href="<?= site_url('peminjaman'); ?>">
         <i class="fas fa-fw fa-folder"></i>
-        <span>Buku</span>
+        <span>peminjaman</span>
     </a>
 </li>
 
 <hr class="sidebar-divider d-none d-md-block">
-
-<li class="nav-item">
-    <a class="nav-link" href="<?= site_url('peminjaman'); ?>">
-        <i class="fas fa-fw fa-users"></i>
-        <span>Peminjaman</span>
-    </a>
-</li>
 
 </ul>
 <div id="content-wrapper" class="d-flex flex-column">
