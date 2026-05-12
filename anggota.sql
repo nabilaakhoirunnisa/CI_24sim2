@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2026 at 10:26 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.4
+-- Waktu pembuatan: 14 Apr 2026 pada 08.36
+-- Versi server: 10.1.38-MariaDB
+-- Versi PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,46 +25,37 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `anggota`
+-- Struktur dari tabel `anggota`
 --
 
 CREATE TABLE `anggota` (
-  `Nomor_Anggota` int(20) NOT NULL,
-  `Nama` varchar(100) NOT NULL,
-  `Alamat` varchar(100) NOT NULL,
-  `Telepon` varchar(13) NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `Tanggal_Daftar` date NOT NULL,
-  `Status` varchar(20) DEFAULT 'Aktif'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `anggota`
---
-
-INSERT INTO `anggota` (`Nomor_Anggota`, `Nama`, `Alamat`, `Telepon`, `Email`, `Tanggal_Daftar`, `Status`) VALUES
-(1, 'nabila', 'kutabumi', '081210487832', 'nabila@gmail.com', '2026-01-09', 'Aktif'),
-(2, 'khoirunnisa', 'periuk', '085137675534', 'knisa@gmail.com', '2026-01-30', 'Aktif');
+  `nomor anggota` int(20) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `alamat` varchar(100) NOT NULL,
+  `telepon` int(20) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `tanggal_daftar` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `anggota`
+-- Indeks untuk tabel `anggota`
 --
 ALTER TABLE `anggota`
-  ADD PRIMARY KEY (`Nomor_Anggota`);
+  ADD PRIMARY KEY (`nomor anggota`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `anggota`
+-- AUTO_INCREMENT untuk tabel `anggota`
 --
 ALTER TABLE `anggota`
-  MODIFY `Nomor_Anggota` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `nomor anggota` int(20) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -27,7 +27,8 @@ class Anggota_model extends CI_Model {
     }
 
     public function delete($id)
-    {
-        return $this->db->delete($this->table, [$this->pk => $id]);
-    }
+{
+    $this->db->where('nomor_anggota', $id);
+    return $this->db->delete('anggota');
+}
 }

@@ -7,7 +7,6 @@ class Anggota extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Anggota_model');
-        $this->load->library('form_validation');
     }
 
     public function index()
@@ -20,7 +19,6 @@ class Anggota extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    // ================= TAMBAH =================
     public function tambah()
     {
         $this->load->view('templates/header');
@@ -31,35 +29,47 @@ class Anggota extends CI_Controller {
     }
 
     public function simpan()
-    {
-        $this->form_validation->set_rules('nomor_anggota', 'Nomor Anggota', 'required');
-        $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
-        $this->form_validation->set_rules('telepon', 'Telepon', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-        $this->form_validation->set_rules('tanggal_daftar', 'Tanggal Daftar', 'required');
-        $this->form_validation->set_rules('status', 'Status', 'required');
+{
+    $this->load->library('form_validation');
 
-        if ($this->form_validation->run() == FALSE) {
-            $this->tambah();
-        } else {
-            $data = [
-                'Nomor_Anggota' => $this->input->post('nomor_anggota'),
-                'Nama'          => $this->input->post('nama'),
-                'Alamat'        => $this->input->post('alamat'),
-                'Telepon'       => $this->input->post('telepon'),
-                'Email'         => $this->input->post('email'),
-                'Tanggal_Daftar'=> $this->input->post('tanggal_daftar'),
-                'Status'        => $this->input->post('status'),
-            ];
+    $this->form_validation->set_rules('nomor_anggota', 'Nomor Anggota', 'required');
+    $this->form_validation->set_rules('nama', 'Nama', 'required');
+    $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+    $this->form_validation->set_rules('telepon', 'Telepon', 'required');
+    $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+    $this->form_validation->set_rules('tanggal_daftar', 'Tanggal Daftar', 'required');
 
-            $this->Anggota_model->insert($data);
-            $this->session->set_flashdata('success', 'Data anggota berhasil ditambahkan');
-            redirect('anggota');
+    if ($this->form_validation->run() == FALSE) {
+        $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
+        $this->load->view('anggota/tambah');
+        $this->load->view('templates/footer');
+    } else {
+
+        $data = [
+            'nomor_anggota' => $this->input->post('nomor_anggota'),
+            'nama'          => $this->input->post('nama'),
+            'alamat'        => $this->input->post('alamat'),
+            'telepon'       => $this->input->post('telepon'),
+            'email'         => $this->input->post('email'),
+            'tanggal_daftar'=> $this->input->post('tanggal_daftar'),
+          'status' => $this->input->post('status')
+        ];
+
+        // 🔥 CEK QUERY + ERROR DATABASE
+        if (!$this->Anggota_model->insert($data)) {
+            echo "<pre>";
+            print_r($this->db->error());
+            echo "</pre>";
+            die;
         }
-    }
 
-    // ================= HAPUS =================
+        echo "DATA BERHASIL MASUK 🔥";
+        die;
+    }
+}
+
     public function hapus($id)
     {
         $this->Anggota_model->delete($id);
@@ -67,11 +77,9 @@ class Anggota extends CI_Controller {
         redirect('anggota');
     }
 
-    // ================= EDIT =================
     public function edit($id)
     {
         $data['anggota'] = $this->Anggota_model->get_by_id($id);
-
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
@@ -81,25 +89,30 @@ class Anggota extends CI_Controller {
 
     public function update($id)
     {
+        $this->load->library('form_validation');
         $this->form_validation->set_rules('nomor_anggota', 'Nomor Anggota', 'required');
         $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
         $this->form_validation->set_rules('telepon', 'Telepon', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('tanggal_daftar', 'Tanggal Daftar', 'required');
-        $this->form_validation->set_rules('status', 'Status', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->edit($id);
+            $data['anggota'] = $this->Anggota_model->get_by_id($id);
+            $this->load->view('templates/header');
+            $this->load->view('templates/sidebar');
+            $this->load->view('templates/topbar');
+            $this->load->view('anggota/edit', $data);
+            $this->load->view('templates/footer');
         } else {
             $data = [
-                'Nomor_Anggota' => $this->input->post('nomor_anggota'),
-                'Nama'          => $this->input->post('nama'),
-                'Alamat'        => $this->input->post('alamat'),
-                'Telepon'       => $this->input->post('telepon'),
-                'Email'         => $this->input->post('email'),
-                'Tanggal_Daftar'=> $this->input->post('tanggal_daftar'),
-                'Status'        => $this->input->post('status'),
+                'nomor_anggota' => $this->input->post('nomor_anggota'),
+                'nama'          => $this->input->post('nama'),
+                'alamat'        => $this->input->post('alamat'),
+                'telepon'       => $this->input->post('telepon'),
+                'email'         => $this->input->post('email'),
+                'tanggal_daftar'=> $this->input->post('tanggal_daftar'),
+                'status' => $this->input->post('status')
             ];
 
             $this->Anggota_model->update($id, $data);

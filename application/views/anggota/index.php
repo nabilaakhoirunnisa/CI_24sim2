@@ -27,11 +27,11 @@
 <?php $no=1; foreach($anggota as $a): ?>
 <tr>
     <td><?= $no++; ?></td>
-    <td><?= $a->Nomor_Anggota; ?></td>
-    <td><?= $a->Nama; ?></td>
-    <td><?= $a->Telepon; ?></td>
-    <td><?= $a->Email; ?></td>
-    <td><?= $a->status == 1 ? 'aktif' : 'Tidak aktif'; ?></td>
+    <td><?= $a->nomor_anggota; ?></td>
+    <td><?= $a->nama; ?></td>
+    <td><?= $a->telepon; ?></td>
+    <td><?= $a->email; ?></td>
+    <td><?= isset($a->status) ? $a->status : '-'; ?></td>
 
     <td>
         <a href="<?= site_url('anggota/edit/'.$a->nomor_anggota); ?>" class="btn btn-warning btn-sm">Edit</a>

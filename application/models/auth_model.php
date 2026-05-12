@@ -5,7 +5,7 @@ class auth_model extends CI_Model{
 
     public function cek_login($username, $password)
     {
-        return $this->db->get_where('users',[
+        return $this->db->get_where('users', [
             'username'=>$username,
             'password'=>md5($password)
         ])->row();
@@ -15,7 +15,7 @@ class auth_model extends CI_Model{
     {
         $this->db->where('id', $id);
         $this->db->update('users', [
-            'last_login=>date('Y-m-d H:i:s')
+            'last_login'=>date('Y-m-d H:i:s')
         ]);
     }
 }

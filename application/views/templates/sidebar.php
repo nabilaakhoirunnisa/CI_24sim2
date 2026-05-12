@@ -42,12 +42,25 @@
 
 <li class="nav-item">
     <a class="nav-link" href="<?= site_url('peminjaman'); ?>">
-        <i class="fas fa-fw fa-folder"></i>
+        <i class="fas fa-fw fa-box"></i>
         <span>peminjaman</span>
     </a>
 </li>
 
+<li class="nav-item">
+    <a class="nav-link" href="<?= site_url('laporan/peminjaman'); ?>">
+        <i class="fas fa-fw fa-box"></i>
+        <span>Laporan Peminjaman</span>
+    </a>
+</li>
+
 <hr class="sidebar-divider d-none d-md-block">
+<li class="nav-item">
+    <a class="nav-link" href="<?= site_url('laporan/peminjaman'); ?>">
+        <i class="fas fa-fw fa-folder"></i>
+        <span>Laporan Peminjaman</span>
+    </a>
+</li>
 
 </ul>
 <div id="content-wrapper" class="d-flex flex-column">
