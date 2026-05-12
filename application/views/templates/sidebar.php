@@ -47,13 +47,6 @@
     </a>
 </li>
 
-<li class="nav-item">
-    <a class="nav-link" href="<?= site_url('laporan/peminjaman'); ?>">
-        <i class="fas fa-fw fa-box"></i>
-        <span>Laporan Peminjaman</span>
-    </a>
-</li>
-
 <hr class="sidebar-divider d-none d-md-block">
 <li class="nav-item">
     <a class="nav-link" href="<?= site_url('laporan/peminjaman'); ?>">
